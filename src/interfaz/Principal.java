@@ -6,6 +6,8 @@
 
 package interfaz;
 
+import clases.Persona;
+
 /**
  *
  * @author amoreno15
@@ -15,6 +17,9 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    
+    Persona v[] = new Persona[5];
+    int cont = 0;
     public Principal() {
         initComponents();
     }
@@ -60,7 +65,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 40, 130, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        jLabel2.setText("Identificacion");
+        jLabel2.setText("Identificación");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
@@ -81,27 +86,32 @@ public class Principal extends javax.swing.JFrame {
         txtResultado.setRows(5);
         jScrollPane1.setViewportView(txtResultado);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 460, 90));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 390, 90));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 480, 150));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 440, 150));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", 0, 0, new java.awt.Font("Edwardian Script ITC", 3, 24))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdGuardar.setText("Guardar");
-        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        cmdGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdGuardarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
         cmdMostrar.setText("Mostrar");
-        jPanel3.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jPanel3.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         cmdLimpiar.setText("Limpiar");
-        jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, -1));
+        jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 70, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 180, 160));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 140, 160));
 
         jLabel1.setFont(new java.awt.Font("Edwardian Script ITC", 3, 36)); // NOI18N
-        jLabel1.setText("Agregar Persona");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        jLabel1.setText("Agregar Personas");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 240, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +127,20 @@ public class Principal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
+        Persona p;
+        long identificacion;
+        String primer_nombre, primer_apellido;
+        
+        identificacion = Long.parseLong(txtIdentificacion.getText());
+        primer_nombre = txtPrimerNombre.getText();
+        primer_apellido = txtPrimerApellido.getText();
+        
+        p = new Persona(identificacion, primer_nombre, primer_apellido);
+        
+        
+    }//GEN-LAST:event_cmdGuardarActionPerformed
 
     /**
      * @param args the command line arguments
