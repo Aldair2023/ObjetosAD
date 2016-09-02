@@ -238,10 +238,11 @@ public class Principal extends javax.swing.JFrame {
                     cont++;
                 }
             }
-
             if (cont == 0) {
                 txtResultado.setText("No hay nada que mostrar");
-
+             
+            }else{
+                txtResultado.append("La cantidad de mujeres es: "+cont);
             }
         }
         txtIdentificacion.requestFocusInWindow();
