@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package interfaz;
 
 import clases.Persona;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,9 +18,8 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    
-    Persona v[] = new Persona[5];
-    int cont = 0;
+    ArrayList< Persona> v = new ArrayList();
+
     public Principal() {
         initComponents();
     }
@@ -41,6 +41,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        cmbSexo = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtResultado = new javax.swing.JTextArea();
@@ -48,6 +50,7 @@ public class Principal extends javax.swing.JFrame {
         cmdGuardar = new javax.swing.JButton();
         cmdMostrar = new javax.swing.JButton();
         cmdLimpiar = new javax.swing.JButton();
+        cmdMostarMujeres = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,11 +59,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Basicos", 0, 0, new java.awt.Font("Edwardian Script ITC", 3, 24))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtPrimerNombre.setEditable(false);
         jPanel2.add(txtPrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 80, 130, -1));
-
-        txtPrimerApellido.setEditable(false);
         jPanel2.add(txtPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 120, 130, -1));
         jPanel2.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 40, 130, -1));
 
@@ -76,19 +75,26 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setText("Prime Apellido");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 260, 160));
+        jLabel5.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        jLabel5.setText("Sexo");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+
+        cmbSexo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino", "Indefinido" }));
+        jPanel2.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 130, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 260, 220));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado", 0, 0, new java.awt.Font("Edwardian Script ITC", 3, 24))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtResultado.setEditable(false);
         txtResultado.setColumns(20);
         txtResultado.setRows(5);
         jScrollPane1.setViewportView(txtResultado);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 390, 90));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 440, 150));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 440, 150));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", 0, 0, new java.awt.Font("Edwardian Script ITC", 3, 24))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,15 +105,33 @@ public class Principal extends javax.swing.JFrame {
                 cmdGuardarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         cmdMostrar.setText("Mostrar");
-        jPanel3.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        cmdMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdMostrarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         cmdLimpiar.setText("Limpiar");
-        jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 70, -1));
+        cmdLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 140, 160));
+        cmdMostarMujeres.setText("Mostrar Mujeres");
+        cmdMostarMujeres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdMostarMujeresActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cmdMostarMujeres, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 130, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 160, 210));
 
         jLabel1.setFont(new java.awt.Font("Edwardian Script ITC", 3, 36)); // NOI18N
         jLabel1.setText("Agregar Personas");
@@ -121,7 +145,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
         );
 
         pack();
@@ -131,16 +155,97 @@ public class Principal extends javax.swing.JFrame {
     private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
         Persona p;
         long identificacion;
-        String primer_nombre, primer_apellido;
-        
+        String primer_nombre, primer_apellido, sexo;
+
         identificacion = Long.parseLong(txtIdentificacion.getText());
         primer_nombre = txtPrimerNombre.getText();
         primer_apellido = txtPrimerApellido.getText();
-        
-        p = new Persona(identificacion, primer_nombre, primer_apellido);
-        
-        
+        sexo = cmbSexo.getSelectedItem().toString();
+
+        p = new Persona(identificacion, primer_nombre, primer_apellido, sexo);
+        v.add(p);
+
+        JOptionPane.showMessageDialog(this, "Persona Agregada Exitosamente");
+        txtIdentificacion.setText("");
+        txtPrimerNombre.setText("");
+        txtPrimerApellido.setText("");
+        txtIdentificacion.requestFocusInWindow();
+        cmbSexo.setSelectedIndex(0);
+
+
     }//GEN-LAST:event_cmdGuardarActionPerformed
+
+    private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
+        String aux;
+        txtResultado.setText("");
+
+        if (v.isEmpty()) {
+            txtResultado.setText("NO hay persona que mostrar");
+        } else {
+
+            for (int i = 0; i < v.size(); i++) {
+                aux = "persona No. " + (i + 1) + "\n"
+                        + "Identificacion: " + v.get(i).getIdentificacion() + "\n"
+                        + "primer nombre: " + v.get(i).getPrimer_nombre() + "\n"
+                        + "primer apellido: " + v.get(i).getPrimer_apellido() + "\n"
+                        + "sexo: " + v.get(i).getSexo() + "\n\n";
+
+                txtResultado.append(aux);
+            }
+            txtIdentificacion.requestFocusInWindow();
+        }
+
+    }//GEN-LAST:event_cmdMostrarActionPerformed
+
+    private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
+        // TODO add your handling code here:
+
+        int op;
+        op = JOptionPane.showConfirmDialog(this, "¿seguro que desea eliminar las personas?", "Pregunta", JOptionPane.YES_NO_OPTION);
+        if (op == JOptionPane.YES_OPTION) {
+            v.clear();
+            txtResultado.setText("");
+            txtIdentificacion.setText("");
+            txtPrimerNombre.setText("");
+            txtPrimerApellido.setText("");
+            txtIdentificacion.requestFocusInWindow();
+            cmbSexo.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_cmdLimpiarActionPerformed
+
+    private void cmdMostarMujeresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostarMujeresActionPerformed
+        // TODO add your handling code here:
+
+        String aux;
+        int cont = 0;
+        txtResultado.setText("");
+
+        if (v.isEmpty()) {
+            txtResultado.setText("NO hay persona que mostrar");
+        } else {
+
+            for (int i = 0; i < v.size(); i++) {
+
+                if (v.get(i).getSexo().equalsIgnoreCase("Femenino")) {
+
+                    aux = "persona No. " + (i + 1) + "\n"
+                            + "Identificacion: " + v.get(i).getIdentificacion() + "\n"
+                            + "primer nombre: " + v.get(i).getPrimer_nombre() + "\n"
+                            + "primer apellido: " + v.get(i).getPrimer_apellido() + "\n"
+                            + "sexo: " + v.get(i).getSexo() + "\n\n";
+
+                    txtResultado.append(aux);
+                    cont++;
+                }
+            }
+
+            if (cont == 0) {
+                txtResultado.setText("No hay nada que mostrar");
+
+            }
+        }
+        txtIdentificacion.requestFocusInWindow();
+    }//GEN-LAST:event_cmdMostarMujeresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,13 +283,16 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbSexo;
     private javax.swing.JButton cmdGuardar;
     private javax.swing.JButton cmdLimpiar;
+    private javax.swing.JButton cmdMostarMujeres;
     private javax.swing.JButton cmdMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
